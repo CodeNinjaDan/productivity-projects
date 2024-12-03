@@ -33,8 +33,16 @@ def flip_card():
     canvas.itemconfig(card_title, text= "English")
     canvas.itemconfig(card_text, text=current_card["English"])
 
+def remove_known_word():
+    global words_dict
+    words_already_known = pandas.DataFrame([current_card])
+    words_already_known.to_csv('data/words_already_known.csv', mode='a', header=False, index=False)
+    words_dict.remove(current_card)
+    pandas.DataFrame(words_dict).to_csv('/home/dan/PycharmProjects/producti'
+                                        'vity-projects/flash_card_app/data/french_words.csv', index=False)
 
 
+    next_card()
 # ------------------------------------ UI SETUP ------------------------------------- #
 
 
@@ -55,7 +63,7 @@ canvas.grid(column=0, row=0, columnspan=2)
 
 
 check_image = PhotoImage(file="/home/dan/PycharmProjects/productivity-projects/flash_card_app/images/right.png")
-known_button = Button(image=check_image, highlightthickness=0, command=next_card)
+known_button = Button(image=check_image, highlightthickness=0, command=remove_known_word)
 known_button.grid(column=1, row=1)
 
 cross_image = PhotoImage(file="/home/dan/PycharmProjects/productivity-projects/flash_card_app/images/wrong.png")
