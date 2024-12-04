@@ -2,3 +2,5 @@ venv
 *.csv
 # Ignore environment variables file
 .env
+/productivity-projects/birthday_wisher_app/birthdays.csv
+*.txt
