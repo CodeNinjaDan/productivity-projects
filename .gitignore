@@ -1,2 +1,4 @@
 venv
 *.csv
+# Ignore environment variables file
+.env
